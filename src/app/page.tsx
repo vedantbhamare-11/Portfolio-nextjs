@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import Header from '../components/Header';
 import AboutMe from '../components/AboutMe';
-// import Skills from '../components/Skills';
+import Skills from '../components/Skills';
 // import Projects from '../components/Projects';
 // import Timeline from '../components/Timeline';
 // import Blogs from '../components/Blogs';
@@ -22,8 +22,8 @@ const Home = () => {
       <div className="font-sans bg-gray-100">
         <Header />
         <AboutMe />
-        {/* <Skills />
-        <Projects />
+        <Skills />
+        {/* <Projects />
         <Timeline />
         <Blogs />
         <Motto />

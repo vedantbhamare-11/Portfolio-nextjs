@@ -4,13 +4,13 @@ const Navbar = () => {
   return (
     <nav className="tabs text-white text-center">
       <div className="container mx-auto">
-        <ul className="flex items-center justify-center flex-col mt-16 lg:mt-0 lg:flex-row gap-8 lg:gap-16">
+        <ul className="flex items-center justify-center  mt-16 lg:mt-0 lg:flex-row gap-8 lg:gap-16">
           <li>
             <a
               href="https://medium.com/@vedantdbhamare"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white font-bold text-xl uppercase transition-colors duration-300 hover:text-yellow-400"
+              className="text-white  text-xl uppercase transition-colors duration-300 hover:text-yellow-400"
             >
               Blog
             </a>
@@ -20,7 +20,7 @@ const Navbar = () => {
               href="https://vedantbhamare.notion.site/Projects-Showcase-441367d3f63a46da95f2f78702c0933b?pvs=4"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white font-bold text-xl uppercase transition-colors duration-300 hover:text-yellow-400"
+              className="text-white  text-xl uppercase transition-colors duration-300 hover:text-yellow-400"
             >
               Project
             </a>
@@ -30,7 +30,7 @@ const Navbar = () => {
               href="https://drive.google.com/file/d/1T-PWMs_vCdi8P6vhl5Xrkj398t9ZuAQK/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white font-bold text-xl uppercase transition-colors duration-300 hover:text-yellow-400"
+              className="text-white text-xl uppercase transition-colors duration-300 hover:text-yellow-400"
             >
               Resume
             </a>
