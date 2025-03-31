@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import AboutMe from '../components/AboutMe';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
-// import Timeline from '../components/Timeline';
+import Timeline from '../components/Timeline';
 // import Blogs from '../components/Blogs';
 // import Motto from '../components/Motto';
 // import Photography from '../components/Photography';
@@ -24,8 +24,8 @@ const Home = () => {
         <AboutMe />
         <Skills />
         <Projects />
-        {/* <Timeline />
-        <Blogs />
+        <Timeline />
+        {/* <Blogs />
         <Motto />
         <Photography />
         <Connect />
