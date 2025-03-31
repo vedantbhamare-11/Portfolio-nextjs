@@ -1,6 +1,12 @@
+// src/components/Skills.tsx
 import React from "react";
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store'; // Import the RootState type from the store
 
-const Skills = () => {
+const Skills: React.FC = () => {
+  // Get skills from Redux store and specify the state type
+  const skills = useSelector((state: RootState) => state.skills.skillsList);
+
   return (
     <section id="skills" className="bg-black py-4">
       <div className="w-full hover:animate-slow-scroll container mx-auto flex flex-col sm:flex-row justify-center items-center">
@@ -13,50 +19,22 @@ const Skills = () => {
               backgroundColor: "#000",
             }}
           >
-            <li>Web Technologies</li>
-            <li>TypeScript</li>
-            <li>Node JS</li>
-            <li>React JS</li>
-            <li>Next JS</li>
-            <li>React Native</li>
-            <li>MongoDB</li>
-            <li>SQL</li>
-            <li>Hugging Face</li>
-            <li>Redux</li>
-            <li>Python</li>
-            <li>GitHub</li>
-            <li>Bootstrap</li>
-            <li>Data Structures</li>
-            <li>Algorithms</li>
-            <li>Gen AI</li>
-            <li className="mr-6">LLMs</li>
+            {skills.map((skill: string, index: number) => (
+              <li key={index}>{skill}</li>
+            ))}
           </ul>
 
           {/* Duplicate the list for continuous scroll */}
           <ul
-            className="inline-flex hover:animate-slow-scroll py-2 font-semibold text-3xl lg:text-4xl text-yellow-400 space-x-8"
+            className="inline-flex hover:animate-slow-scroll py-2 font-semibold text-3xl lg:text-4xl text-yellow-400 space-x-8 ml-6"
             style={{
               animation: "scrollSkills 30s linear infinite",
               backgroundColor: "#000",
             }}
           >
-            <li>Web Technologies</li>
-            <li>TypeScript</li>
-            <li>Node JS</li>
-            <li>React JS</li>
-            <li>Next JS</li>
-            <li>React Native</li>
-            <li>MongoDB</li>
-            <li>SQL</li>
-            <li>Hugging Face</li>
-            <li>Redux</li>
-            <li>Python</li>
-            <li>GitHub</li>
-            <li>Bootstrap</li>
-            <li>Data Structures</li>
-            <li>Algorithms</li>
-            <li>Gen AI</li>
-            <li>LLMs</li>
+            {skills.map((skill: string, index: number) => (
+              <li key={index}>{skill}</li>
+            ))}
           </ul>
         </div>
       </div>
