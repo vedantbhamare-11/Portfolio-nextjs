@@ -22,7 +22,7 @@ const AboutMe = () => {
         {/* About Text */}
         <div className="about-text text-white max-w-xl p-6">
           <div className="flex flex-row justify-between mb-4">
-            <h2 className="lg:text-4xl text-2xl font-semibold">About Me</h2>
+            <h2 className="lg:text-4xl text-2xl text-yellow-400 font-semibold">About Me</h2>
             {/* Non-Nonsense Toggle Switch */}
             <div className="flex items-center justify-end sm:justify-start">
               <label className="flex items-center cursor-pointer">
