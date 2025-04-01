@@ -8,7 +8,7 @@ import Timeline from '../components/Timeline';
 import Blogs from '../components/Blogs';
 // import Motto from '../components/Motto';
 import Photography from '../components/Photography';
-// import Connect from '../components/Connect';
+import Connect from '../components/Connect';
 // import Footer from '../components/Footer';
 
 const Home = () => {
@@ -28,8 +28,8 @@ const Home = () => {
         <Blogs />
         {/* <Motto /> */}
         <Photography />
-        {/* <Connect />
-        <Footer /> */}
+        <Connect />
+        {/* <Footer /> */}
       </div>
     </>
   );

@@ -13,7 +13,7 @@ const Skills: React.FC = () => {
         {/* Skills List */}
         <div className="relative overflow-hidden whitespace-nowrap w-full">
           <ul
-            className="inline-flex py-4 font-semibold text-3xl lg:text-4xl text-black space-x-8"
+            className="italic inline-flex py-4 font-semibold text-3xl lg:text-4xl text-black space-x-8"
             style={{
               animation: "scrollSkills 30s linear infinite",
               backgroundColor: "#FFFF00",
@@ -26,7 +26,7 @@ const Skills: React.FC = () => {
 
           {/* Duplicate the list for continuous scroll */}
           <ul
-            className="inline-flex hover:animate-slow-scroll py-4 font-semibold text-3xl lg:text-4xl text-black space-x-8"
+            className="italic inline-flex hover:animate-slow-scroll py-4 font-semibold text-3xl lg:text-4xl text-black space-x-8"
             style={{
               animation: "scrollSkills 30s linear infinite",
               backgroundColor: "#FFFF00",
