@@ -1,6 +1,6 @@
 // redux/photographySlice.ts
 
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 // Define the shape of the state
 interface PhotographyState {

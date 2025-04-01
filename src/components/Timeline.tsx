@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store"; // Make sure this is imported to access RootState
+import Image from "next/image";
 
 const Timeline: React.FC = () => {
   // Fetch timeline data from the Redux store
@@ -39,7 +40,7 @@ const Timeline: React.FC = () => {
                       <path d={event.svgIcon} /> {/* SVG Path from timelineData */}
                     </svg>
                   ) : event.logoUrl ? (
-                    <img
+                    <Image
                       src={event.logoUrl}
                       alt={`${event.title} logo`}
                       className="w-8 h-8 rounded-full"

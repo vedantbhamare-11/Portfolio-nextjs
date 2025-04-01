@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useState } from "react";
 
 const AboutMe = () => {
@@ -12,7 +13,7 @@ const AboutMe = () => {
       <div className="container mx-auto flex flex-col sm:flex-row justify-center items-center  text-left">
         {/* Profile Info */}
         <div className="profile-info relative flex justify-center sm:justify-start  lg:m-8">
-          <img
+          <Image
             src="1.jpeg"
             alt="Profile Image"
             className="profile-pic w-full h-full lg:h-120 p-8 mx-auto sm:mx-0 transition-transform duration-500 ease-in-out"
@@ -51,7 +52,7 @@ const AboutMe = () => {
           <p className="text-xl leading-relaxed">
             {/* Striking through specific words/phrases */}
             <span className={isImportantOnly ? "line-through opacity-50" : ""}>
-              Hey! I'm a
+              Hey! I’m a
             </span>
             <span> Software Developer</span>{" "}
             <span className={isImportantOnly ? "line-through opacity-50" : ""}>

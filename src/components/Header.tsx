@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import Navbar from './Navbar';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Header = () => {
   useEffect(() => {
@@ -63,9 +65,9 @@ const Header = () => {
       </div>
 
       {/* Scroll Down Arrow */}
-      <a href="/" id="scroll-arrow" className="absolute bottom-20 left-1/2 transform -translate-x-1/2 cursor-pointer opacity-50 hover:opacity-80 transition-all sm:bottom-16">
-        <img src="arrow.png" alt="Scroll Down" className="w-12 h-12 hover:w-16 hover:h-16 transition duration-500" />
-      </a>
+      <Link href="/" id="scroll-arrow" className="absolute bottom-20 left-1/2 transform -translate-x-1/2 cursor-pointer opacity-50 hover:opacity-80 transition-all sm:bottom-16">
+        <Image src="arrow.png" alt="Scroll Down" className="w-12 h-12 hover:w-16 hover:h-16 transition duration-500" />
+      </Link>
     </div>
   );
 };

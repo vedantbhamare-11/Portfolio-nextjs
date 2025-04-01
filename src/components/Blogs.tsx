@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 // Define the shape of the blog data
@@ -31,7 +32,7 @@ const Blogs: React.FC = () => {
         target="_blank"
         key={article.id}
       >
-        <img
+        <Image
           src={article.social_image || fallbackImage}
           alt={article.title}
           className="w-full h-auto object-cover"
@@ -49,7 +50,7 @@ const Blogs: React.FC = () => {
   return (
     <section id="blogs" className="py-10 px-4 bg-black">
       <div className="container mx-auto max-w-5xl text-left">
-        <h2 className="text-4xl font-semibold text-left text-cyan-400 mb-12">I write lil' bit as well...</h2>
+        <h2 className="text-4xl font-semibold text-left text-cyan-400 mb-12">I write lil&lsquo; bit as well...</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {blogData.map((article) => createBlogCard(article))}
         </div>

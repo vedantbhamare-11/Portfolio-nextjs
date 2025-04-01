@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store'; // Update this path to where your store is located
+import Image from 'next/image';
 
 const Photography: React.FC = () => {
   const images = useSelector((state: RootState) => state.photography.images);
@@ -36,7 +37,7 @@ const Photography: React.FC = () => {
               key={index}
               className={`border-1 border-white w-full h-full ${getImageClass(image.orientation)}`}
             >
-              <img
+              <Image
                 className="w-full h-full object-cover object-center opacity-90 hover:opacity-100"
                 src={image.src}
                 alt={`Photography ${index}`}
