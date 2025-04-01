@@ -33,10 +33,13 @@ const Blogs: React.FC = () => {
         key={article.id}
       >
         <Image
-          src={article.social_image || fallbackImage}
-          alt={article.title}
-          className="w-full h-auto object-cover"
-        />
+  width={500}
+  height={500}
+  src={article.social_image || fallbackImage}
+  alt={article.title}
+  className="w-full h-auto object-cover"
+/>
+
         <div className="p-4">
           <h3 className="text-xl font-semibold text-white group-hover:text-cyan-400">
             {article.title}

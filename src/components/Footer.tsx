@@ -9,6 +9,8 @@ const Footer: React.FC = () => {
         {/* <h2 className="text-4xl font-bold text-white mb-4">Ciao, See ya!</h2> */}
         {/* You can change the path to where the image is located */}
         <Image
+          width={200}
+          height={200}
           src="/footer.png" 
           alt="Ciao, See ya!"
           className="mx-auto w-full max-w-xs"

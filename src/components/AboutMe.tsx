@@ -14,7 +14,9 @@ const AboutMe = () => {
         {/* Profile Info */}
         <div className="profile-info relative flex justify-center sm:justify-start  lg:m-8">
           <Image
-            src="1.jpeg"
+            src="/1.jpeg"
+            width={300}
+            height={300}
             alt="Profile Image"
             className="profile-pic w-full h-full lg:h-120 p-8 mx-auto sm:mx-0 transition-transform duration-500 ease-in-out"
           />

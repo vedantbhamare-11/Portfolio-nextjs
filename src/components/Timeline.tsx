@@ -43,6 +43,8 @@ const Timeline: React.FC = () => {
                     <Image
                       src={event.logoUrl}
                       alt={`${event.title} logo`}
+                      width={32}
+                      height={32}
                       className="w-8 h-8 rounded-full"
                     />
                   ) : null}

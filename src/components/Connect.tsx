@@ -31,22 +31,28 @@ const Connect: React.FC = () => {
             <div className="flex justify-center gap-12">
               <a href="https://www.linkedin.com/in/vedant-bhamare-4086281a4/" target="_blank" rel="noopener noreferrer">
                 <Image
+                  width={50}
+                  height={50}
                   className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                  src="Social Media Icons/linkedin.png"
+                  src="/Social Media Icons/linkedin.png"
                   alt="LinkedIn Icon"
                 />
               </a>
               <a href="https://www.instagram.com/vedantbhamare_/" target="_blank" rel="noopener noreferrer">
                 <Image
+                  width={50}
+                  height={50}
                   className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                  src="Social Media Icons/instagram.png"
+                  src="/Social Media Icons/instagram.png"
                   alt="Instagram Icon"
                 />
               </a>
               <a href="https://twitter.com/VedantBhamare8" target="_blank" rel="noopener noreferrer">
                 <Image
+                width={50}
+                height={50}
                   className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                  src="Social Media Icons/twitter.png"
+                  src="/Social Media Icons/twitter.png"
                   alt="Twitter Icon"
                 />
               </a>
@@ -71,22 +77,28 @@ const Connect: React.FC = () => {
           <div className="flex justify-center gap-10">
             <a href="https://github.com/vedantbhamare-11" target="_blank" rel="noopener noreferrer">
               <Image
+                width={50}
+                height={50}
                 className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                src="Social Media Icons/github.png"
+                src="/Social Media Icons/github.png"
                 alt="GitHub Icon"
               />
             </a>
             <a href="https://dev.to/vedantbhamare" target="_blank" rel="noopener noreferrer">
               <Image
+                width={50}
+                height={50}
                 className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                src="Social Media Icons/dev.png"
+                src="/Social Media Icons/dev.png"
                 alt="Dev.to Icon"
               />
             </a>
             <a href="https://medium.com/@vedantdbhamare" target="_blank" rel="noopener noreferrer">
               <Image
+                width={50}
+                height={50}
                 className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                src="Social Media Icons/medium.png"
+                src="/Social Media Icons/medium.png"
                 alt="Medium Icon"
               />
             </a>

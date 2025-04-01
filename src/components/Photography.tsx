@@ -38,6 +38,8 @@ const Photography: React.FC = () => {
               className={`border-1 border-white w-full h-full ${getImageClass(image.orientation)}`}
             >
               <Image
+              width={500}
+              height={500}
                 className="w-full h-full object-cover object-center opacity-90 hover:opacity-100"
                 src={image.src}
                 alt={`Photography ${index}`}
