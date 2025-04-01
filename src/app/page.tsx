@@ -5,7 +5,7 @@ import AboutMe from '../components/AboutMe';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Timeline from '../components/Timeline';
-// import Blogs from '../components/Blogs';
+import Blogs from '../components/Blogs';
 // import Motto from '../components/Motto';
 // import Photography from '../components/Photography';
 // import Connect from '../components/Connect';
@@ -25,8 +25,8 @@ const Home = () => {
         <Skills />
         <Projects />
         <Timeline />
-        {/* <Blogs />
-        <Motto />
+        <Blogs />
+        {/* <Motto />
         <Photography />
         <Connect />
         <Footer /> */}
