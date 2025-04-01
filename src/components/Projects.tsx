@@ -22,7 +22,7 @@ const Projects: React.FC = () => {
 
   return (
     <section id="projects" className="py-10 bg-black">
-      <h2 className="text-4xl font-semibold text-center text-yellow-400 mb-12">
+      <h2 className="text-4xl font-semibold text-center text-cyan-400 mb-12">
         Where Vision Meets Code
       </h2>
       <div className="w-full grid lg:grid-cols-2 flex p-4 flex-wrap max-w-5xl min-h-32 flex-col gap-8 container mx-auto">
