@@ -9,7 +9,7 @@ import Blogs from '../components/Blogs';
 // import Motto from '../components/Motto';
 import Photography from '../components/Photography';
 import Connect from '../components/Connect';
-// import Footer from '../components/Footer';
+import Footer from '../components/Footer';
 
 const Home = () => {
   return (
@@ -29,7 +29,7 @@ const Home = () => {
         {/* <Motto /> */}
         <Photography />
         <Connect />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   );
