@@ -8,12 +8,12 @@ const Skills: React.FC = () => {
   const skills = useSelector((state: RootState) => state.skills.skillsList);
 
   return (
-    <section id="skills" className="bg-black py-4">
+    <section id="skills" className="bg-black py-16">
       <div className="w-full hover:animate-slow-scroll container mx-auto flex flex-col sm:flex-row justify-center items-center">
         {/* Skills List */}
         <div className="relative overflow-hidden whitespace-nowrap w-full">
           <ul
-            className="inline-flex py-2 font-semibold text-3xl lg:text-4xl text-yellow-400 space-x-8"
+            className="inline-flex py-2 font-semibold text-3xl lg:text-4xl text-cyan-400 space-x-8"
             style={{
               animation: "scrollSkills 30s linear infinite",
               backgroundColor: "#000",
@@ -26,7 +26,7 @@ const Skills: React.FC = () => {
 
           {/* Duplicate the list for continuous scroll */}
           <ul
-            className="inline-flex hover:animate-slow-scroll py-2 font-semibold text-3xl lg:text-4xl text-yellow-400 space-x-8 ml-6"
+            className="inline-flex hover:animate-slow-scroll py-2 font-semibold text-3xl lg:text-4xl text-cyan-400 space-x-8 ml-6"
             style={{
               animation: "scrollSkills 30s linear infinite",
               backgroundColor: "#000",
