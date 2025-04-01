@@ -19,7 +19,7 @@ const initialState: TimelineState = {
   timelineData: [
     {
         date: "Year 2017",
-        title: "Began Life as a Developer",
+        title: "My First Line of Code",
         description:
           "In my tenth grade year, I started to get interested in the topic of web development. The introduction of HTML, CSS, and JS increased my interest in coding. After that, I experimented with JavaScript, which provided the framework for my technological journey.",
         svgIcon:
@@ -57,10 +57,10 @@ const initialState: TimelineState = {
       },
       {
         date: "Sept 2024 - Present",
-        title: "Developer and AI/ML Engineer at TMBC",
+        title: "Developer and AI/ML Engineer at TMCC",
         description:
-          "Worked as a Developer and AI/ML Engineer at TMBC, contributing to multiple projects involving React Native, Next.js, and RAG applications. Focused on fine-tuning models and working with large language models (LLMs) to enhance application performance and capabilities.",
-        logoUrl: "tmbc.png", // Example logo URL
+          "Worked as a Developer and AI/ML Engineer at TMCC, contributing to multiple projects involving React Native, Next.js, and RAG applications. Focused on fine-tuning models and working with large language models (LLMs) to enhance application performance and capabilities.",
+        logoUrl: "tmcc.png", // Example logo URL
       },
   ],
 };
