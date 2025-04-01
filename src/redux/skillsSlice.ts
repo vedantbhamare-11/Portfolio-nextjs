@@ -20,6 +20,7 @@ const initialState = {
     'Algorithms',
     'Gen AI',
     'LLMs',
+    "  ",
   ],
 };
 

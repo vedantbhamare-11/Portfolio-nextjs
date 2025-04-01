@@ -35,7 +35,7 @@ const AboutMe = () => {
                 />
                 <div className="relative">
                   <div
-                    className={`w-12 h-6 bg-gray-600  rounded-full  ${
+                    className={`w-12 h-6 bg-cyan-600  rounded-full  ${
                       isImportantOnly ? "bg-cyan-400" : "bg-gray-600"
                     } `}
                   ></div>
