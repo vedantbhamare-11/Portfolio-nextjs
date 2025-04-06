@@ -21,14 +21,14 @@ const initialState: ProjectsState = {
       title: "FocusForge",
       description:
         "It is a productivity web application that aids users in concentrating on their work and accomplishing their objectives.  By turning on Pomodoro clocks, calendars, habit trackers, Todo task lists, and more.  Additionally, soothing music and stunning wallpapers featuring the current time and inspirational sayings.",
-      link: "https://www.notion.so/vedantbhamare/Trip-and-Itinerary-Planner-b4ae2dc976954d66a101caa341847e67",
+      link: "https://vedantbhamare.notion.site/FocusForge-Build-Habits-Boost-Productivity-1cc67c5bdc6780aab52ef09d443f789b",
     },
     {
       id: 2,
       title: "WordSense AI",
       description:
         "WordSense, an AI extension for Chrome, enables users find the meaning of words while they're on the go and filter out the areas they wish to study.  Additionally, cross-language meanings are included.",
-      link: "https://www.notion.so/vedantbhamare/Trip-and-Itinerary-Planner-b4ae2dc976954d66a101caa341847e67",
+      link: "https://vedantbhamare.notion.site/WordSense-AI-Meanings-are-your-Fingertips-1cc67c5bdc6780888203f8e91c08fb2e?pvs=74",
     },
     {
       id: 3,
