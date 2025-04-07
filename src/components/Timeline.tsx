@@ -27,7 +27,7 @@ const Timeline: React.FC = () => {
                   {/* Conditionally Render SVG or Logo */}
                   {event.svgIcon ? (
                     <svg
-                      className="w-6 h-6 dark:text-blue-400"
+                      className="w-6 h-6 text-blue-400"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       stroke="black"
@@ -53,13 +53,13 @@ const Timeline: React.FC = () => {
               <div className={`mt-4 ml-6 mr-4 lg:ml-12 ${index % 2 === 0 ? "sm:ml-0" : ""}`}>
                 {/* Timeline Text and Content */}
                 <div className="w-full lg:ml-0 ml-4 lg:w-3/4 max-w-6xl text-left">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-lg font-semibold text-white">
                     {event.title}
                   </h3>
-                  <time className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                  <time className="block mb-2 text-sm font-normal leading-none text-gray-500">
                     {event.date}
                   </time>
-                  <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                  <p className="mb-4 text-base font-normal text-gray-400">
                     {event.description}
                   </p>
                 </div>
