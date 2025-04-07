@@ -61,8 +61,8 @@ const Connect: React.FC = () => {
 
           {/* Get in Touch section */}
           <div className="flex flex-col items-center p-8 rounded-lg shadow-lg w-full sm:w-80">
-            <p className="text-lg font-semibold mb-4">
-              Wanna connect formally?
+          <p className="text-center text-sm text-gray-500 mb-4 italic">
+             Wanna connect formally. <br /> ✉️ Mail me.
             </p>
             <button
               onClick={composeEmail}
