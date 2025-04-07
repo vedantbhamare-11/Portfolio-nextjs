@@ -16,13 +16,13 @@ const Timeline: React.FC = () => {
 
       {/* Timeline items */}
       <div className="flex justify-center lg:p-2 px-6">
-        <ol className="border-l ml-4 border-gray-200 dark:border-gray-700 w-full max-w-4xl">
+        <ol className="border-l ml-4 border-gray-700 w-full max-w-4xl">
           {timelineData.map((event, index) => (
             <li key={index} className="mb-10">
               <div className="flex items-center justify-start relative">
                 {/* Circle - Display either SVG or Logo */}
                 <div
-                  className={`flex absolute lg:-ml-6 -ml-4 items-center justify-center w-8 h-8 lg:w-12 lg:h-12 rounded-full ring-8 ring-white dark:ring-gray-900 bg-white z-10`}
+                  className={`flex absolute lg:-ml-6 -ml-4 items-center justify-center w-8 h-8 lg:w-12 lg:h-12 rounded-full ring-8 ring-gray-900 bg-white z-10`}
                 >
                   {/* Conditionally Render SVG or Logo */}
                   {event.svgIcon ? (
