@@ -25,7 +25,7 @@ const Projects: React.FC = () => {
       <h2 className="text-4xl font-semibold text-center text-cyan-400 mb-12">
         Where Vision Meets Code
       </h2>
-      <div className="w-full cursor-pointer grid grid-cols-2 flex p-4 flex-wrap max-w-5xl min-h-32 flex-col gap-8 container mx-auto">
+      <div className="w-full cursor-pointer lg:grid lg:grid-cols-2 flex p-4 flex-wrap max-w-5xl min-h-32 flex-col gap-8 container mx-auto">
         {projects.map((project) => (
           <div
             key={project.id}
