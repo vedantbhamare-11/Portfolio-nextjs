@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <Image
           width={200}
           height={200}
-          src="/footer.png" 
+          src="/other/footer.png" 
           alt="Ciao, See ya!"
           className="mx-auto w-full max-w-xs"
         />

@@ -23,7 +23,7 @@ const Blogs: React.FC = () => {
   }, []);
 
   const createBlogCard = (article: Article) => {
-    const fallbackImage = "/default-blog-image.png"; // Absolute path from public folder
+    const fallbackImage = "/other/default-blog-image.png"; // Absolute path from public folder
   
     return (
       <a

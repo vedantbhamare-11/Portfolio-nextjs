@@ -22,7 +22,7 @@ const initialState: TimelineState = {
       title: "Developer and AI/ML Engineer at TMCC",
       description:
         "Worked as a Developer and AI/ML Engineer at TMCC, contributing to multiple projects involving React Native, Next.js, and RAG applications. Focused on fine-tuning models and working with large language models (LLMs) to enhance application performance and capabilities.",
-      logoUrl: "/tmcc.png", // Example logo URL
+      logoUrl: "/company-logos/tmcc.png", // Example logo URL
     },
     {
       date: "Feb 2024 - May 2024",
@@ -37,14 +37,14 @@ const initialState: TimelineState = {
       title: "Bootcamp at Procedure - Product Development 101",
       description:
         "Built 2 web applications using HTML, CSS, TypeScript, ReactJS, and various frameworks. Collaborated on team projects, accelerating issue resolution by 60% and enhancing teamwork. Engaged with 10+ developers, fostering knowledge sharing, and implemented 4 new design patterns for improved code quality.",
-      logoUrl: "/procedure.png", // Example logo URL
+      logoUrl: "/company-logos/procedure.png", // Example logo URL
     },
     {
       date: "June 2023 - August 2023",
       title: "Introduced to Machine Learning at IBC Cube",
       description:
         "Worked as an ML intern at IBC Cube! Worked on Asset/Defect Detection on Roads using Machine Learning with an incredible team. Practical experience in data preprocessing, model training, and assessment. Using ML and Python libraries to create creative solutions.",
-      logoUrl: "/ibc.png", // Example logo URL
+      logoUrl: "/company-logos/ibc.png", // Example logo URL
     },
     {
       date: "Year 2019 - 2023",

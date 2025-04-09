@@ -102,7 +102,7 @@ const Connect: React.FC = () => {
                 width={50}
                 height={50}
                 className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                src="/Social Media Icons/github.png"
+                src="/social-media-icons/github.png"
                 alt="GitHub Icon"
               />
             </a>
@@ -115,7 +115,7 @@ const Connect: React.FC = () => {
                 width={50}
                 height={50}
                 className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                src="/Social Media Icons/dev.png"
+                src="/social-media-icons/dev.png"
                 alt="Dev.to Icon"
               />
             </a>
@@ -128,7 +128,7 @@ const Connect: React.FC = () => {
                 width={50}
                 height={50}
                 className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                src="/Social Media Icons/medium.png"
+                src="/social-media-icons/medium.png"
                 alt="Medium Icon"
               />
             </a>
