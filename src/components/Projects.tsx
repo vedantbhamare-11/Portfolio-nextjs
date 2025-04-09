@@ -25,7 +25,7 @@ const Projects: React.FC = () => {
       <h2 className="text-4xl font-semibold text-center text-cyan-400 mb-12">
         Where Vision Meets Code
       </h2>
-      <div className="w-full grid lg:grid-cols-2 flex p-4 flex-wrap max-w-5xl min-h-32 flex-col gap-8 container mx-auto">
+      <div className="w-full cursor-pointer grid grid-cols-2 flex p-4 flex-wrap max-w-5xl min-h-32 flex-col gap-8 container mx-auto">
         {projects.map((project) => (
           <div
             key={project.id}
@@ -33,12 +33,18 @@ const Projects: React.FC = () => {
             onClick={() => openLink(project.link)} // Make the card clickable to the Notion link
           >
             <h1 className="text-3xl font-bold text-white">{project.title}</h1>
-            
-            {/* Conditionally render the description based on the expanded state */}
-            {expandedProject === project.id && (
-              <p className="text-white text-lg">{project.description}</p>
-            )}
-            
+
+            {/* Conditionally render the description with smooth transition */}
+            <div
+              className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                expandedProject === project.id ? "max-h-[1000px]" : "max-h-0"
+              }`}
+            >
+              {expandedProject === project.id && (
+                <p className="text-white mt-2 text-lg">{project.description}</p>
+              )}
+            </div>
+
             {/* Read More / Show Less Button */}
             <button
               className="text-cyan-400 mt-4 flex justify-end"
