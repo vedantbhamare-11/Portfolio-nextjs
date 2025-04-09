@@ -1,7 +1,6 @@
-// src/components/Skills.tsx
 import React from "react";
-import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store'; // Import the RootState type from the store
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store"; // Import the RootState type from the store
 
 const Skills: React.FC = () => {
   // Get skills from Redux store and specify the state type
@@ -20,7 +19,12 @@ const Skills: React.FC = () => {
             }}
           >
             {skills.map((skill: string, index: number) => (
-              <li key={index}>{skill}</li>
+              <li key={index}>
+                {skill}
+                {index < skills.length - 1 && (
+                  <span className="text-4xl ml-7">&#x2734;</span>
+                )}
+              </li>
             ))}
           </ul>
 
@@ -33,7 +37,12 @@ const Skills: React.FC = () => {
             }}
           >
             {skills.map((skill: string, index: number) => (
-              <li key={index}>{skill}</li>
+              <li key={index}>
+                {skill}
+                {index < skills.length - 1 && (
+                  <span className="text-4xl ml-7">&#x2734;</span>
+                )}
+              </li>
             ))}
           </ul>
         </div>
