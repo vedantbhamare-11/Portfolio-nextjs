@@ -20,6 +20,12 @@ const initialState = {
     'Algorithms',
     'Gen AI',
     'LLMs',
+    'Prompt Engineering',
+    'OpenAI',
+    'AI',
+    'Machine Learning',
+    'Deep Learning',
+    'Computer Vision',
     "  ",
   ],
 };
