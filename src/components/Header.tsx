@@ -61,7 +61,7 @@ const Header = () => {
     <div className="relative w-full bg-black overflow-hidden">
       <canvas
         id="demo-canvas"
-        className="absolute hidden lg:block top-0 left-0 w-full h-full"
+        className="absolute hidden lg:block xl:block top-0 left-0 w-full h-full"
       />
       <div className="max-w-full mx-auto">
         <div
