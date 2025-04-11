@@ -58,6 +58,7 @@ const Header = () => {
 
   return (
     <div className="relative w-full bg-black overflow-hidden">
+      <canvas id="demo-canvas" className="absolute   lg:block top-0 left-0 w-full h-full"/>
       <div className="max-w-full mx-auto">
         <div id="large-header" className="relative block w-full h-[770px] bg-cover bg-center z-0">
           {/* Main Title */}
@@ -74,7 +75,6 @@ const Header = () => {
       </div>
 
       {/* Canvas Tag for Mouse Effect */}
-      <canvas id="demo-canvas" className="absolute hidden lg:block top-0 left-0 w-full h-full" />
 
       {/* Scroll Down Arrow */}
       <Link href="/" id="scroll-arrow" className="absolute bottom-20 left-1/2 transform -translate-x-1/2 cursor-pointer opacity-50 hover:opacity-80 transition-all sm:bottom-16">
