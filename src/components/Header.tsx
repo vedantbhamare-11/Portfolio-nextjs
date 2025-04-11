@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react';
-import Navbar from './Navbar';
-import Image from 'next/image';
-import Link from 'next/link';
+import React, { useEffect } from "react";
+import Navbar from "./Navbar";
+import Link from "next/link";
 
 const Header = () => {
   useEffect(() => {
     // Dynamically load external scripts for canvas effect
     const script1 = document.createElement("script");
-    script1.src = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js";
+    script1.src =
+      "https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js";
     script1.async = true;
     document.body.appendChild(script1);
 
     const script2 = document.createElement("script");
-    script2.src = "https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js";
+    script2.src =
+      "https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js";
     script2.async = true;
     document.body.appendChild(script2);
 
@@ -58,9 +59,15 @@ const Header = () => {
 
   return (
     <div className="relative w-full bg-black overflow-hidden">
-      <canvas id="demo-canvas" className="absolute   lg:block top-0 left-0 w-full h-full"/>
+      <canvas
+        id="demo-canvas"
+        className="absolute   lg:block top-0 left-0 w-full h-full"
+      />
       <div className="max-w-full mx-auto">
-        <div id="large-header" className="relative block w-full h-[770px] bg-cover bg-center z-0">
+        <div
+          id="large-header"
+          className="relative block w-full h-[770px] bg-cover bg-center z-0"
+        >
           {/* Main Title */}
           <h1 className="absolute top-1/3 left-1/2 flex gap-6 flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 text-white text-5xl uppercase tracking-wide lg:text-8xl">
             <span className="block">Vedant</span>
@@ -77,8 +84,25 @@ const Header = () => {
       {/* Canvas Tag for Mouse Effect */}
 
       {/* Scroll Down Arrow */}
-      <Link href="/" id="scroll-arrow" className="absolute bottom-20 left-1/2 transform -translate-x-1/2 cursor-pointer opacity-50 hover:opacity-80 transition-all sm:bottom-16">
-        <Image width={48} height={48} src="/other/arrow.png" alt="Scroll Down" className="w-12 h-12 hover:w-16 hover:h-16 transition duration-500" />
+      <Link
+        href="/"
+        id="scroll-arrow"
+        className="absolute bottom-20 left-1/2 transform -translate-x-1/2 cursor-pointer opacity-50 hover:opacity-80 transition-all sm:bottom-16"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="size-8 animate-bounce"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m4.5 5.25 7.5 7.5 7.5-7.5m-15 6 7.5 7.5 7.5-7.5"
+          />
+        </svg>
       </Link>
     </div>
   );
