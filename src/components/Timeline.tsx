@@ -23,10 +23,10 @@ const Timeline: React.FC = () => {
   };
 
   const itemVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 30,
-      scale: 0.95 
+      scale: 0.95,
     },
     show: {
       opacity: 1,
@@ -40,10 +40,10 @@ const Timeline: React.FC = () => {
   };
 
   const nodeVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0.8,
-      rotate: -10 
+      rotate: -10,
     },
     show: {
       opacity: 1,
@@ -57,10 +57,10 @@ const Timeline: React.FC = () => {
   };
 
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 40,
-      scale: 0.92 
+      scale: 0.92,
     },
     show: {
       opacity: 1,
@@ -93,12 +93,12 @@ const Timeline: React.FC = () => {
         }}
       >
         {/* Section Header */}
-        <motion.div 
-          className="text-center mb-28" 
+        <motion.div
+          className="text-center mb-28"
           variants={{
             hidden: { opacity: 0, y: 50 },
-            show: { 
-              opacity: 1, 
+            show: {
+              opacity: 1,
               y: 0,
               transition: {
                 duration: 0.8,
@@ -111,10 +111,10 @@ const Timeline: React.FC = () => {
             className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-widest bg-gradient-to-r from-white via-slate-200 to-cyan-400 bg-clip-text text-transparent drop-shadow-2xl mb-6 leading-tight"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 0.9, 
+            transition={{
+              duration: 0.9,
               ease: [0.25, 0.46, 0.45, 0.94],
-              delay: 0.1 
+              delay: 0.1,
             }}
           >
             My Journey
@@ -122,14 +122,14 @@ const Timeline: React.FC = () => {
           <motion.div
             className="w-32 h-1 mx-auto bg-gradient-to-r from-transparent via-white/70 to-cyan-400 rounded-full shadow-xl"
             initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ 
-              scaleX: 1, 
+            animate={{
+              scaleX: 1,
               opacity: 1,
-              transition: { 
-                duration: 0.8, 
-                delay: 0.4, 
-                ease: [0.25, 0.46, 0.45, 0.94] 
-              }
+              transition: {
+                duration: 0.8,
+                delay: 0.4,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              },
             }}
             style={{ originX: 0.5 }}
           />
@@ -138,7 +138,8 @@ const Timeline: React.FC = () => {
         {/* Modern Timeline */}
         <div className="relative">
           {/* Central Timeline Line */}
-          <div className="
+          <div
+            className="
             absolute 
             left-8 
             lg:left-1/2 
@@ -152,7 +153,8 @@ const Timeline: React.FC = () => {
             to-purple-400/40 
             shadow-lg 
             z-10
-          " />
+          "
+          />
 
           <motion.div
             className="space-y-16 lg:space-y-20"
@@ -173,12 +175,12 @@ const Timeline: React.FC = () => {
                 "
               >
                 {/* Timeline Node */}
-                <motion.div 
+                <motion.div
                   className="flex flex-col items-center w-full lg:w-1/2 z-20"
                   variants={itemVariants}
                 >
                   <motion.div
-                    className="absolute left-0 lg:relative w-16 h-16 lg:w-24 lg:h-24 bg-white/10 backdrop-blur-xl border-2 border-white/20 rounded-3xl shadow-2xl hover:shadow-cyan-500/40 hover:shadow-purple-500/20 hover:border-cyan-400/50 transition-all duration-700 hover:scale-110 hover:rotate-3 flex items-center justify-center group cursor-default"
+                    className="absolute left-0 lg:relative w-16 h-16 lg:w-24 lg:h-24 bg-white/10 backdrop-blur-xl border-2 border-white/20 rounded-3xl shadow-2xl hover:shadow-cyan-500/40 hover:border-cyan-400/50 transition-all duration-700 hover:scale-110 hover:rotate-3 flex items-center justify-center group cursor-default"
                     variants={nodeVariants}
                     whileHover={{
                       scale: 1.15,
@@ -225,11 +227,11 @@ const Timeline: React.FC = () => {
                     className="mt-3 lg:mt-8 text-center"
                     variants={{
                       hidden: { opacity: 0, y: 20 },
-                      show: { 
-                        opacity: 1, 
+                      show: {
+                        opacity: 1,
                         y: 0,
-                        transition: { duration: 0.5 }
-                      }
+                        transition: { duration: 0.5 },
+                      },
                     }}
                   >
                     <div className="ml-16 lg:ml-0 px-4 py-2 lg:px-6 lg:py-3 lg:bg-slate-900/60 lg:backdrop-blur-md lg:border lg:border-slate-700/60 text-xs lg:text-base font-extrabold lg:font-semibold uppercase tracking-widest text-slate-300 rounded-2xl lg:shadow-xl hover:shadow-cyan-500/30 transition-all duration-300 hover:bg-slate-800/80">
