@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google"; // Your original working imports
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ProviderWrapper from "@/components/ProviderWrapper";
 import { Analytics } from "@vercel/analytics/react";
@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// ✅ FIXED: Pure metadata (no viewport/themeColor)
 export const metadata: Metadata = {
   title: {
     default: "Vedant Bhamare",
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: {
       index: true,
-    follow: true,
+      follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -60,11 +61,18 @@ export const metadata: Metadata = {
   verification: {
     google: "your-google-site-verification",
   },
-  viewport: "width=device-width, initial-scale=1",
+};
+
+// ✅ NEW: Separate viewport export
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
   ],
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
