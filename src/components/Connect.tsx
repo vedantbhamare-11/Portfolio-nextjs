@@ -1,140 +1,157 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
+import { ExternalLink, Mail, Github } from "lucide-react";
 import Image from "next/image";
 
 const Connect: React.FC = () => {
-  const handleBentoClick = () => {
-    window.open("https://bento.me/vedantbhamare", "_blank"); // Open Bento.me profile link
+  const openLink = (url: string) => {
+    window.open(url, "_blank");
   };
 
   const composeEmail = () => {
     const email = "vedantdbhamare@gmail.com";
     const subject = "Let's Connect";
-    const body = "Hi Vedant,\n\nI would like to connect with you.";
-    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+    const body = "Hi Vedant,\n\nI would love to connect with you.";
+    window.location.href = `mailto:${email}?subject=${encodeURIComponent(
       subject
     )}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
+  };
+
+  /** Animations */
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.42, 0, 0.58, 1],
+      },
+    },
   };
 
   return (
-    <section id="connect" className="py-10 bg-black">
-      <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-semibold text-cyan-400 mb-12">
-          Let&rsquo;s <span className="font-bold">Connect</span> and{" "}
-          <span className="font-bold">Create</span>
-        </h2>
-        <p className="text-lg mb-12">
-          Drop me a DM, always up for Tech Talk, Side Hustles, and Opportunities
-        </p>
+    <section id="connect" className="relative py-32 overflow-hidden">
 
-        {/* Flex container to align both sections side by side on larger screens */}
-        <div className="flex px-8 flex-col sm:flex-row justify-center gap-8 lg:gap-12 lg:mb-10">
-          {/* Bento.me button */}
-          <div className="flex flex-col items-center p-8 rounded-lg shadow-lg w-full sm:w-80">
-          <p className="text-center text-sm text-gray-500 mb-4 italic">
-              All My social media links in one click. It’s basically magic. ✨
+
+      <motion.div
+        className="relative z-10 container mx-auto px-6 max-w-5xl"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={containerVariants}
+      >
+        {/* Header */}
+        <motion.div className="text-center mb-20" variants={cardVariants}>
+          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-widest bg-gradient-to-r from-white via-slate-100 to-cyan-400 bg-clip-text text-transparent mb-6">
+            Let’s Connect
+          </h2>
+          <div className="w-24 h-1 mx-auto bg-gradient-to-r from-transparent via-white to-cyan-400 rounded-full" />
+          <p className="text-xl text-slate-400 mt-6 max-w-2xl mx-auto">
+            Always up for tech talks, side hustles, and meaningful collaborations
+          </p>
+        </motion.div>
+
+        {/* Cards */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20"
+          variants={containerVariants}
+        >
+          {/* Bento */}
+          <motion.div
+            variants={cardVariants}
+            className="group relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 hover:border-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 hover:-translate-y-2"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-500 -z-10" />
+
+            <p className="text-slate-400 mb-8 leading-relaxed">
+              All my social links in one place — clean, simple, and kinda magical ✨
             </p>
+
             <button
-              onClick={handleBentoClick}
-              className="w-auto bg-cyan-500 flex items-center justify-center gap-4 text-white py-3 px-6 rounded-full text-xl transition-all duration-300 group"
+              onClick={() => openLink("https://bento.me/vedantbhamare")}
+              className="flex items-center gap-3 px-8 py-4 bg-white/10 border border-white/20 rounded-2xl text-white font-semibold hover:bg-white/20 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-300"
             >
               bento.me
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6 transform group-hover:translate-x-3 transition-all duration-300 ease-in-out"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                />
-              </svg>
+              <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            
-          </div>
+          </motion.div>
 
-          {/* Get in Touch section */}
-          <div className="flex flex-col items-center p-8 rounded-lg shadow-lg w-full sm:w-80">
-          <p className="text-center text-sm text-gray-500 mb-4 italic">
-             Wanna connect formally. <br /> ✉️ Mail me.
+          {/* Email */}
+          <motion.div
+            variants={cardVariants}
+            className="group relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 hover:border-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 hover:-translate-y-2"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-500 -z-10" />
+
+            <p className="text-slate-400 mb-8 leading-relaxed">
+              Prefer formal conversations or opportunities? Drop me a mail 📬
             </p>
+
             <button
               onClick={composeEmail}
-              className="w-auto bg-cyan-500 flex items-center justify-center gap-4 text-white py-3 px-6 rounded-full text-xl transition-all duration-300 group"
+              className="flex items-center gap-3 px-8 py-4 bg-cyan-500/90 rounded-2xl text-black font-bold hover:bg-cyan-400 hover:shadow-xl hover:shadow-cyan-500/40 transition-all duration-300"
             >
               Get in Touch
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6 transform group-hover:translate-x-3 transition-all duration-300 ease-in-out"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                />
-              </svg>
+              <Mail className="w-5 h-5" />
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Profile section */}
-        <div>
-          <p className="text-lg font-semibold mb-4">
-            Also, check out my profiles on
+        {/* Socials */}
+        <motion.div
+          variants={cardVariants}
+          className="text-center"
+        >
+          <p className="text-lg font-semibold text-slate-300 mb-8">
+            Also find me here
           </p>
+
           <div className="flex justify-center gap-10">
-            <a
-              href="https://github.com/vedantbhamare-11"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                width={50}
-                height={50}
-                className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                src="/social-media-icons/github.png"
-                alt="GitHub Icon"
-              />
-            </a>
-            <a
-              href="https://dev.to/vedantbhamare"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                width={50}
-                height={50}
-                className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                src="/social-media-icons/dev.png"
-                alt="Dev.to Icon"
-              />
-            </a>
-            <a
-              href="https://medium.com/@vedantdbhamare"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                width={50}
-                height={50}
-                className="w-12 h-12 opacity-80 hover:opacity-100 transition-all"
-                src="/social-media-icons/medium.png"
-                alt="Medium Icon"
-              />
-            </a>
+            {[
+              {
+                href: "https://github.com/vedantbhamare-11",
+                src: "/social-media-icons/github.png",
+                alt: "GitHub",
+              },
+              {
+                href: "https://dev.to/vedantbhamare",
+                src: "/social-media-icons/dev.png",
+                alt: "Dev.to",
+              },
+              {
+                href: "https://medium.com/@vedantdbhamare",
+                src: "/social-media-icons/medium.png",
+                alt: "Medium",
+              },
+            ].map((item) => (
+              <a
+                key={item.alt}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="opacity-70 hover:opacity-100 hover:-translate-y-1 transition-all duration-300"
+              >
+                <Image
+                  width={48}
+                  height={48}
+                  src={item.src}
+                  alt={item.alt}
+                />
+              </a>
+            ))}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
