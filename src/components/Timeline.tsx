@@ -117,7 +117,9 @@ const Timeline: React.FC = () => {
               delay: 0.1,
             }}
           >
-            My Journey
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-widest bg-gradient-to-r from-slate-100 via-white to-cyan-300 bg-clip-text text-transparent drop-shadow-2xl leading-tight">
+              My Journey
+            </h2>
           </motion.h2>
           <motion.div
             className="w-32 h-1 mx-auto bg-gradient-to-r from-transparent via-white/70 to-cyan-400 rounded-full shadow-xl"
