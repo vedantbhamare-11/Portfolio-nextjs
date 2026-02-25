@@ -155,13 +155,13 @@ const AboutMe = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                Hey! I'm a
+                Hey! I&apos;m a
               </span>{" "}
               <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : "font-normal"}>
                 Software Developer
               </span>{" "}
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                who's equally at home building sleek UIs with
+                who&apos;s equally at home building sleek UIs with
               </span>{" "}
               <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : "font-normal"}>
                 React, Next.js
@@ -187,7 +187,7 @@ const AboutMe = () => {
               <br />
               <br />
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                I'm fluent in
+                I&apos;m fluent in
               </span>{" "}
               <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : "font-normal"}>
                 TypeScript
@@ -210,7 +210,7 @@ const AboutMe = () => {
               <br />
               <br />
               <span className={isImportantOnly ? "font-bold text-white drop-shadow-2xl" : "font-semibold text-white drop-shadow-lg"}>
-                Let's build something awesome!
+                Let&apos;s build something awesome!
               </span>
             </motion.p>
 

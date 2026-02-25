@@ -91,7 +91,7 @@ const Projects: React.FC = () => {
           className="grid grid-cols-1 lg:grid-cols-2 gap-8"
           variants={containerVariants}
         >
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <motion.div
               key={project.id}
               variants={cardVariants}

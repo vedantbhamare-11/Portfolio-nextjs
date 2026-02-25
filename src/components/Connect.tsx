@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Mail, Github } from "lucide-react";
+import { ExternalLink, Mail } from "lucide-react";
 import Image from "next/image";
 
 const Connect: React.FC = () => {

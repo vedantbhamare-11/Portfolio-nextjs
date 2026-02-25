@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import { ArrowRight, Mail } from "lucide-react";
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);

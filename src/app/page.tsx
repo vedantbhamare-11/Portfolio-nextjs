@@ -1,17 +1,13 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import AboutMe from "@/components/AboutMe";
-import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Timeline from "@/components/Timeline";
-import Blogs from "@/components/Blogs";
 import Photography from "@/components/Photography";
 import Connect from "@/components/Connect";
-import Footer from "@/components/Footer";
 
 export default function Home() {
-  const { scrollYProgress } = useScroll();
 
   // Parallax background transform - SAME as Header
 
