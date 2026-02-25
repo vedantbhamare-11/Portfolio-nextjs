@@ -30,7 +30,7 @@ const Header = () => {
         {/* Name Container - Always Perfectly Centered */}
         <div className="relative inline-block mb-8">
           <motion.h1
-            className="text-5xl md:text-7xl font-bold uppercase tracking-wider bg-gradient-to-r from-white via-slate-100 to-purple-200 bg-clip-text text-transparent drop-shadow-2xl"
+            className="text-5xl mt-6 lg:mt-0 md:text-7xl font-bold uppercase tracking-wider bg-gradient-to-r from-white via-slate-100 to-purple-200 bg-clip-text text-transparent drop-shadow-2xl"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
@@ -116,7 +116,7 @@ const Header = () => {
               variant="outline"
               size="lg"
               asChild
-              className="group relative border-white/50 bg-black/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white hover:shadow-2xl hover:shadow-cyan-500/20 hover:shadow-purple-500/10 text-lg px-10 py-7 font-semibold transition-all duration-500 border-2 shadow-xl"
+              className="group relative border-white/50 bg-black/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white hover:shadow-2xl hover:shadow-purple-500/10 text-lg px-10 py-7 font-semibold transition-all duration-500 border-2 shadow-xl"
             >
               <Link href="#connect" className="flex items-center gap-3">
                 <motion.div
@@ -130,7 +130,7 @@ const Header = () => {
                   <Mail className="w-5 h-5 text-white" strokeWidth={3} />
                 </motion.div>
                 <span>Get In Touch</span>
-                <motion.span className="absolute inset-0 border-2 border-current opacity-0 group-hover:opacity-100 transition-opacity duration-500 -inset-1 rounded-lg -z-10" />
+                <motion.span className="absolute inset-0 border-2 border-current opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg -z-10" />
               </Link>
             </Button>
           </motion.div>
