@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 const AboutMe = () => {
@@ -26,13 +26,16 @@ const AboutMe = () => {
     { name: "AI", color: "from-indigo-500 to-purple-500" },
   ];
 
-  // Video autoplay + loop control
+  // ✅ AUTOPLAY + LOOP BY DEFAULT - Always playing when !isImportantOnly
   useEffect(() => {
     const video = videoRef.current;
     if (video && !isImportantOnly) {
-      video.play();
-      video.loop = true;
-      video.muted = true;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.warn('Autoplay prevented:', error);
+        });
+      }
     }
   }, [isImportantOnly]);
 
@@ -53,16 +56,18 @@ const AboutMe = () => {
           >
             <div className="relative w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px] xl:h-[560px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border border-slate-800/50 backdrop-blur-xl hover:border-cyan-500/40 group transition-all duration-700 hover:shadow-3xl hover:shadow-cyan-500/30 mx-auto aspect-[3/4]">
               
-              {/* VIDEO - Shows when !isImportantOnly (Full Story) */}
+              {/* ✅ VIDEO - AUTOPLAY + LOOP BY DEFAULT */}
               {!isImportantOnly ? (
                 <motion.video
                   ref={videoRef}
                   className="w-full h-full object-cover rounded-2xl lg:rounded-3xl hover:scale-[1.02] transition-transform duration-700 group-hover:scale-[1.05]"
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  initial={{ opacity: 1 }}
+                  autoPlay  // ✅ Autoplay ON by default
+                  loop      // ✅ Loop ON by default
+                  muted     // ✅ Required for autoplay
+                  playsInline  // ✅ Required for mobile
+                  preload="metadata"
+                  poster="/personal/scene-poster.jpg"
+                  initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
@@ -72,10 +77,10 @@ const AboutMe = () => {
                 </motion.video>
               ) : null}
 
-              {/* PROFILE PHOTO - VERTICAL (3:4 aspect ratio) */}
+              {/* PROFILE PHOTO */}
               {isImportantOnly ? (
                 <motion.div
-                  className="w-full h-full relative rounded-2xl lg:rounded-3xl overflow-hidden"
+                  className="w-full h-full relative rounded-2xl lg:removed-3xl overflow-hidden"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
@@ -85,23 +90,17 @@ const AboutMe = () => {
                     src="/personal/profile-pic.jpeg"
                     alt="Vedant Bhamare"
                     fill
-                    className="object-cover hover:scale-[1.02] transition-transform duration-700 group-hover:scale-[1.05] rounded-2xl lg:rounded-3xl"
+                    className="object-cover hover:scale-[1.02] transition-transform duration-700 group-hover:scale-[1.05]"
                     priority
                   />
-                  
-                  {/* Profile Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent/80 to-transparent pointer-events-none" />
-                  
-                  {/* Profile Glow */}
                   <div className="absolute -inset-2 lg:-inset-4 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-slate-900/20 rounded-3xl blur-xl animate-pulse opacity-70" />
-                  
-                  
                 </motion.div>
               ) : null}
             </div>
           </motion.div>
 
-          {/* About Content - Left Side (Bottom on Mobile) */}
+          {/* About Content */}
           <motion.div
             className="flex-1 text-white max-w-xl lg:max-w-none order-2 lg:order-1 w-full"
             initial={{ opacity: 0, y: 50 }}
@@ -121,7 +120,6 @@ const AboutMe = () => {
                 About Me
               </h2>
 
-              {/* Toggle Switch */}
               <div 
                 className="flex flex-col justify-start items-start gap-2 cursor-pointer group min-w-[120px]" 
                 onClick={toggleVisibility}
@@ -214,7 +212,7 @@ const AboutMe = () => {
               </span>
             </motion.p>
 
-            {/* Tech Stack Badges - Responsive Grid */}
+            {/* Tech Stack Badges */}
             <motion.div
               className="grid grid-cols-2 sm:grid-cols-3 lg:flex flex-wrap gap-2 sm:gap-3"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -227,7 +225,6 @@ const AboutMe = () => {
                   key={tech.name}
                   className={`px-3 py-2 sm:px-4 sm:py-2 bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 hover:border-cyan-400/50 rounded-xl sm:rounded-full shadow-xl hover:shadow-cyan-500/30 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-purple-500/10 transition-all duration-400 cursor-default flex items-center gap-1.5 sm:gap-2 hover:scale-105 hover:-translate-y-1 text-xs sm:text-xs`}
                   whileHover={{ scale: 1.08, y: -3 }}
-                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 1 + index * 0.08 }}
                 >
                   <div
