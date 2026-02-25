@@ -1,17 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Button } from "@/components/ui/button"; // Install Shadcn Button
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Navbar from "./Navbar";
 import { ArrowRight, Mail } from "lucide-react";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const { scrollYProgress } = useScroll();
-
-  // Parallax background transform
-  const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -19,20 +15,18 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <div className="relative w-full min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900 text-white">
-      {/* Animated Background */}
-      <motion.div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.3),transparent),radial-gradient(circle_at_80%_20%,rgba(120,119,198,0.3),transparent)]"
-        style={{ y: yBackground }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-      />
+  // Smooth scroll to AboutMe section
+  const scrollToAbout = () => {
+    document.getElementById("about")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  };
 
+  return (
+    <div className="relative w-full min-h-screen flex flex-col justify-center items-center text-white z-10">
       {/* Hero Title with Fullstack Badge */}
-      {/* Hero Title with Fullstack Badge - Name Centered, Badge Top-Right */}
-      <div className="relative z-10 container mx-auto px-6 text-center max-w-4xl">
+      <div className="container mx-auto px-6 text-center max-w-4xl">
         {/* Name Container - Always Perfectly Centered */}
         <div className="relative inline-block mb-8">
           <motion.h1
@@ -69,7 +63,7 @@ const Header = () => {
               }}
             />
             <span className="text-xs font-semibold capitalize text-white/90">
-              Fullstack Developer
+             SDE-2 @TMCC
             </span>
           </motion.div>
         </div>
@@ -84,10 +78,7 @@ const Header = () => {
           <Navbar />
         </motion.div>
 
-        {/* Rest of your CTA buttons remain exactly the same */}
-
-        {/* Enhanced CTA Buttons with Lucid React */}
-        {/* Enhanced CTA Buttons - Fixed Icons */}
+        {/* Enhanced CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -102,7 +93,6 @@ const Header = () => {
               className="group relative bg-white/90 backdrop-blur-sm text-slate-900 hover:bg-white hover:shadow-2xl hover:shadow-white/20 text-lg px-10 py-7 font-semibold border-0 overflow-hidden shadow-xl transition-all duration-500"
             >
               <Link href="#projects" className="flex items-center gap-3">
-                {/* Fixed: Visible icon with hover-only animation */}
                 <motion.div
                   className="w-6 h-6 flex items-center justify-center shrink-0"
                   whileHover={{
@@ -112,16 +102,10 @@ const Header = () => {
                   }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  <ArrowRight
-                    className="w-5 h-5 text-slate-900"
-                    strokeWidth={3}
-                  />
+                  <ArrowRight className="w-5 h-5 text-slate-900" strokeWidth={3} />
                 </motion.div>
                 <span>Explore Work</span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-purple-500 via-cyan-400 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10 blur-xl"
-                  style={{ scale: 1 }}
-                />
+                <motion.div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-cyan-400 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500 -z-10 blur-xl" />
               </Link>
             </Button>
           </motion.div>
@@ -135,7 +119,6 @@ const Header = () => {
               className="group relative border-white/50 bg-black/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white hover:shadow-2xl hover:shadow-cyan-500/20 hover:shadow-purple-500/10 text-lg px-10 py-7 font-semibold transition-all duration-500 border-2 shadow-xl"
             >
               <Link href="#connect" className="flex items-center gap-3">
-                {/* Fixed: Simplified hover-only animation */}
                 <motion.div
                   className="w-6 h-6 flex items-center justify-center shrink-0"
                   whileHover={{
@@ -147,19 +130,16 @@ const Header = () => {
                   <Mail className="w-5 h-5 text-white" strokeWidth={3} />
                 </motion.div>
                 <span>Get In Touch</span>
-                <motion.span
-                  className="absolute inset-0 border-2 border-current opacity-0 group-hover:opacity-100 transition-opacity duration-500 -inset-1 rounded-lg -z-10"
-                  style={{ scale: 1 }}
-                />
+                <motion.span className="absolute inset-0 border-2 border-current opacity-0 group-hover:opacity-100 transition-opacity duration-500 -inset-1 rounded-lg -z-10" />
               </Link>
             </Button>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Now scrolls to AboutMe */}
       <motion.div
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-60 hover:opacity-100 transition-opacity cursor-pointer z-20"
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 0.6 }}
         transition={{
@@ -169,6 +149,7 @@ const Header = () => {
           delay: 1.2,
         }}
         whileHover={{ scale: 1.1 }}
+        onClick={scrollToAbout} // ✅ Smooth scroll to AboutMe
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -185,20 +166,6 @@ const Header = () => {
           />
         </svg>
       </motion.div>
-
-      {/* Navbar - Fixed on scroll */}
-      {/* <motion.div
-        className={`absolute left-1/2 -translate-x-1/2 top-8 lg:top-12 transition-all duration-300 ${
-          scrolled
-            ? "top-4 backdrop-blur-md bg-black/30 rounded-xl p-4 shadow-2xl"
-            : ""
-        }`}
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <Navbar />
-      </motion.div> */}
     </div>
   );
 };
