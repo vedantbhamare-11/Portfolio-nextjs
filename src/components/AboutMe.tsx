@@ -2,6 +2,8 @@
 import { motion } from "framer-motion";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { Video } from "lucide-react";
+import VideoPlayer from "./VideoPlayer";
 
 const AboutMe = () => {
   const [isImportantOnly, setIsImportantOnly] = useState(false);
@@ -33,7 +35,7 @@ const AboutMe = () => {
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch((error) => {
-          console.warn('Autoplay prevented:', error);
+          console.warn("Autoplay prevented:", error);
         });
       }
     }
@@ -55,26 +57,9 @@ const AboutMe = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <div className="relative w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px] xl:h-[560px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border border-slate-800/50 backdrop-blur-xl hover:border-cyan-500/40 group transition-all duration-700 hover:shadow-3xl hover:shadow-cyan-500/30 mx-auto aspect-[3/4]">
-              
               {/* ✅ VIDEO - AUTOPLAY + LOOP BY DEFAULT */}
               {!isImportantOnly ? (
-                <motion.video
-                  ref={videoRef}
-                  className="w-full h-full object-cover rounded-2xl lg:rounded-3xl hover:scale-[1.02] transition-transform duration-700 group-hover:scale-[1.05]"
-                  autoPlay  // ✅ Autoplay ON by default
-                  loop      // ✅ Loop ON by default
-                  muted     // ✅ Required for autoplay
-                  playsInline  // ✅ Required for mobile
-                  preload="metadata"
-                  poster="/personal/scene-poster.jpg"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <source src="/personal/scene.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </motion.video>
+                <VideoPlayer src="/personal/scene.mp4" />
               ) : null}
 
               {/* PROFILE PHOTO */}
@@ -120,8 +105,8 @@ const AboutMe = () => {
                 About Me
               </h2>
 
-              <div 
-                className="flex flex-col justify-start items-start gap-2 cursor-pointer group min-w-[120px]" 
+              <div
+                className="flex flex-col justify-start items-start gap-2 cursor-pointer group min-w-[120px]"
                 onClick={toggleVisibility}
               >
                 <div className="relative">
@@ -133,7 +118,7 @@ const AboutMe = () => {
                     />
                   </div>
                 </div>
-                <motion.span 
+                <motion.span
                   className="text-xs uppercase text-slate-400 font-medium origin-left tracking-wide"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, scale: isImportantOnly ? 1.05 : 1 }}
@@ -155,31 +140,61 @@ const AboutMe = () => {
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
                 Hey! I&apos;m a
               </span>{" "}
-              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : "font-normal"}>
+              <span
+                className={
+                  isImportantOnly
+                    ? "font-bold text-white drop-shadow-lg"
+                    : "font-normal"
+                }
+              >
                 Software Developer
               </span>{" "}
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
                 who&apos;s equally at home building sleek UIs with
               </span>{" "}
-              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : "font-normal"}>
+              <span
+                className={
+                  isImportantOnly
+                    ? "font-bold text-white drop-shadow-lg"
+                    : "font-normal"
+                }
+              >
                 React, Next.js
               </span>
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
                 , and
               </span>{" "}
-              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : "font-normal"}>
+              <span
+                className={
+                  isImportantOnly
+                    ? "font-bold text-white drop-shadow-lg"
+                    : "font-normal"
+                }
+              >
                 React Native
               </span>{" "}
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
                 as I am creating robust back-end solutions with
               </span>{" "}
-              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : "font-normal"}>
+              <span
+                className={
+                  isImportantOnly
+                    ? "font-bold text-white drop-shadow-lg"
+                    : "font-normal"
+                }
+              >
                 Node.js
               </span>
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
                 , and
               </span>{" "}
-              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : "font-normal"}>
+              <span
+                className={
+                  isImportantOnly
+                    ? "font-bold text-white drop-shadow-lg"
+                    : "font-normal"
+                }
+              >
                 Python.
               </span>
               <br />
@@ -187,19 +202,37 @@ const AboutMe = () => {
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
                 I&apos;m fluent in
               </span>{" "}
-              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : "font-normal"}>
+              <span
+                className={
+                  isImportantOnly
+                    ? "font-bold text-white drop-shadow-lg"
+                    : "font-normal"
+                }
+              >
                 TypeScript
               </span>
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
                 , and libraries like
               </span>{" "}
-              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : "font-normal"}>
+              <span
+                className={
+                  isImportantOnly
+                    ? "font-bold text-white drop-shadow-lg"
+                    : "font-normal"
+                }
+              >
                 Material UI, Tailwind CSS, ShadCN
               </span>
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
                 , and
               </span>{" "}
-              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : "font-normal"}>
+              <span
+                className={
+                  isImportantOnly
+                    ? "font-bold text-white drop-shadow-lg"
+                    : "font-normal"
+                }
+              >
                 Bootstrap
               </span>{" "}
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
@@ -207,7 +240,13 @@ const AboutMe = () => {
               </span>
               <br />
               <br />
-              <span className={isImportantOnly ? "font-bold text-white drop-shadow-2xl" : "font-semibold text-white drop-shadow-lg"}>
+              <span
+                className={
+                  isImportantOnly
+                    ? "font-bold text-white drop-shadow-2xl"
+                    : "font-semibold text-white drop-shadow-lg"
+                }
+              >
                 Let&apos;s build something awesome!
               </span>
             </motion.p>
