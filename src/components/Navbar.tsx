@@ -40,7 +40,7 @@ const Navbar = () => {
         </Link>
 
         <Link
-          href="https://drive.google.com/file/d/1Mdo8GdNAU61s3Wo1_ZP3zPTv_vaNGrhK/view?usp=sharing"
+          href="https://drive.google.com/file/d/1OU9eLtkcMf2CPwmSkAh2ZqGSbaVpjJ0i/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="group relative text-lg lg:text-xl font-medium uppercase tracking-wider text-white/90 hover:text-white transition-all duration-300"
