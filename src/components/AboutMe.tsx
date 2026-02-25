@@ -1,13 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { Video } from "lucide-react";
-import VideoPlayer from "./VideoPlayer";
 
 const AboutMe = () => {
   const [isImportantOnly, setIsImportantOnly] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   const toggleVisibility = () => {
     setIsImportantOnly(!isImportantOnly);
@@ -28,19 +25,6 @@ const AboutMe = () => {
     { name: "AI", color: "from-indigo-500 to-purple-500" },
   ];
 
-  // ✅ AUTOPLAY + LOOP BY DEFAULT - Always playing when !isImportantOnly
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video && !isImportantOnly) {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.warn("Autoplay prevented:", error);
-        });
-      }
-    }
-  }, [isImportantOnly]);
-
   return (
     <section
       id="about"
@@ -48,7 +32,7 @@ const AboutMe = () => {
     >
       <div className="relative z-10 container mx-auto px-4 sm:px-6 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-8 lg:gap-16">
-          {/* Right Side - Video/Profile (Top on Mobile) */}
+          {/* Right Side - Profile Picture ONLY */}
           <motion.div
             className="w-full lg:flex-1 lg:w-auto order-1 lg:order-2 mx-auto lg:ml-auto max-w-sm lg:max-w-md xl:max-w-lg"
             initial={{ opacity: 0, scale: 0.9, x: 50 }}
@@ -57,31 +41,24 @@ const AboutMe = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <div className="relative w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px] xl:h-[560px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border border-slate-800/50 backdrop-blur-xl hover:border-cyan-500/40 group transition-all duration-700 hover:shadow-3xl hover:shadow-cyan-500/30 mx-auto aspect-[3/4]">
-              {/* ✅ VIDEO - AUTOPLAY + LOOP BY DEFAULT */}
-              {!isImportantOnly ? (
-                <VideoPlayer src="/personal/scene.mp4" />
-              ) : null}
-
-              {/* PROFILE PHOTO */}
-              {isImportantOnly ? (
-                <motion.div
-                  className="w-full h-full relative rounded-2xl lg:removed-3xl overflow-hidden"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <Image
-                    src="/personal/profile-pic.jpeg"
-                    alt="Vedant Bhamare"
-                    fill
-                    className="object-cover hover:scale-[1.02] transition-transform duration-700 group-hover:scale-[1.05]"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent/80 to-transparent pointer-events-none" />
-                  <div className="absolute -inset-2 lg:-inset-4 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-slate-900/20 rounded-3xl blur-xl animate-pulse opacity-70" />
-                </motion.div>
-              ) : null}
+              {/* ✅ PROFILE PHOTO ONLY - Toggle works the same */}
+              <motion.div
+                className="w-full h-full relative rounded-2xl lg:rounded-3xl overflow-hidden"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4 }}
+              >
+                <Image
+                  src="/personal/profile-pic.jpeg"
+                  alt="Vedant Bhamare"
+                  fill
+                  className="object-cover hover:scale-[1.02] transition-transform duration-700 group-hover:scale-[1.05]"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent/80 to-transparent pointer-events-none" />
+                <div className="absolute -inset-2 lg:-inset-4 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-slate-900/20 rounded-3xl blur-xl animate-pulse opacity-70" />
+              </motion.div>
             </div>
           </motion.div>
 
@@ -138,7 +115,7 @@ const AboutMe = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                Hey! I&apos;m a
+                Hey! I'm a
               </span>{" "}
               <span
                 className={
@@ -150,7 +127,7 @@ const AboutMe = () => {
                 Software Developer
               </span>{" "}
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                who&apos;s equally at home building sleek UIs with
+                who's equally at home building sleek UIs with
               </span>{" "}
               <span
                 className={
@@ -200,7 +177,7 @@ const AboutMe = () => {
               <br />
               <br />
               <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                I&apos;m fluent in
+                I'm fluent in
               </span>{" "}
               <span
                 className={
@@ -247,7 +224,7 @@ const AboutMe = () => {
                     : "font-semibold text-white drop-shadow-lg"
                 }
               >
-                Let&apos;s build something awesome!
+                Let's build something awesome!
               </span>
             </motion.p>
 

@@ -150,7 +150,7 @@ const Photography: React.FC = () => {
                 src={image.src}
                 alt={`Photography ${index + 1}`}
                 fill
-                className="object-cover object-center hover:scale-110 transition-all duration-1000 group-hover:brightness-110 group-hover:contrast-125 hover:grayscale-0 transition-all duration-1000 z-10"
+                className="object-cover object-center hover:scale-110 transition-all duration-1000 group-hover:brightness-110 group-hover:contrast-125 hover:grayscale-0 z-10"
                 sizes="100vw"
                 priority={index < 3}
               />
