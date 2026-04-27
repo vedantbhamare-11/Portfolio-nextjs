@@ -1,187 +1,234 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import React, { useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, BookOpen, Github, ChevronDown } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleProjectDescription } from "../redux/projectsSlice";
-import { RootState } from "../redux/store";
+import {
+  toggleProjectDescription,
+  selectAllProjects,
+  selectExpandedProject,
+  type Project,
+} from "../redux/projectsSlice";
 
-const Projects: React.FC = () => {
-  const dispatch = useDispatch();
-  const expandedProject = useSelector(
-    (state: RootState) => state.projects.expandedProject
-  );
-  const projects = useSelector((state: RootState) => state.projects.projects);
+// ── Animation Variants ────────────────────────────────────────────
+const containerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+};
 
-  const openLink = (url: string) => {
-    window.open(url, "_blank");
-  };
+const cardVariants = {
+  hidden: { opacity: 0, y: 32 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.42, 0, 0.58, 1] },
+  },
+};
 
-  const toggleDescription = (projectId: number) => {
-    dispatch(toggleProjectDescription(projectId));
-  };
+// ── Tag ───────────────────────────────────────────────────────────
+const Tag: React.FC<{ label: string }> = ({ label }) => (
+  <span className="px-2.5 py-1 text-xs font-medium rounded-full bg-white/8 border border-white/10 text-slate-400 tracking-wide">
+    {label}
+  </span>
+);
 
-  // Staggered animation variants
-  const containerVariants = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
+// ── ActionButton ──────────────────────────────────────────────────
+interface ActionButtonProps {
+  onClick: (e: React.MouseEvent) => void;
+  icon?: React.ReactNode;
+  children?: React.ReactNode;
+  variant?: "primary" | "outline" | "ghost";
+  title?: string;
+  ariaLabel?: string;
+}
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
-    show: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.42, 0, 0.58, 1],
-      }
-    }
+const ActionButton: React.FC<ActionButtonProps> = ({
+  onClick, icon, children, variant = "primary", title, ariaLabel,
+}) => {
+  const base =
+    "flex items-center gap-2 rounded-2xl font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400";
+  const variants = {
+    primary: "px-5 py-2.5 bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-white/40 hover:shadow-lg hover:shadow-cyan-500/20",
+    outline: "px-5 py-2.5 border-2 border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400 hover:text-cyan-300 hover:shadow-lg hover:shadow-cyan-500/30",
+    ghost: "p-2.5 bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10 hover:text-white hover:shadow-lg hover:shadow-cyan-500/20",
   };
 
   return (
-    <section 
-      id="projects" 
-      className="relative w-full py-32 overflow-hidden "
+    <button onClick={onClick} className={`${base} ${variants[variant]}`} title={title} aria-label={ariaLabel}>
+      {icon}
+      {children}
+    </button>
+  );
+};
+
+// ── ProjectCard ───────────────────────────────────────────────────
+interface ProjectCardProps {
+  project: Project;
+  isExpanded: boolean;
+  onToggle: (id: number) => void;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, isExpanded, onToggle }) => {
+  const openLink = useCallback(
+    (url?: string) => url && window.open(url, "_blank", "noopener noreferrer"),
+    []
+  );
+
+  const stop = (fn: () => void) => (e: React.MouseEvent) => {
+    e.stopPropagation();
+    fn();
+  };
+
+  const demoUrl = project.liveUrl ?? project.link;
+  const hasLive = !!project.liveUrl;
+
+  return (
+    <motion.article
+      variants={cardVariants}
+      className="group relative overflow-hidden bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-3xl p-7 cursor-pointer
+                 hover:border-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-500/10 hover:-translate-y-1.5
+                 transition-all duration-500"
+      onClick={() => openLink(demoUrl)}
+      tabIndex={0}
+      role="article"
+      aria-label={`${project.title} project`}
+      onKeyDown={(e) => e.key === "Enter" && openLink(demoUrl)}
     >
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/8 group-hover:to-purple-500/8 transition-all duration-500 pointer-events-none" />
+
+      <div className="relative z-10 flex flex-col gap-5">
+        {/* Header */}
+        <div className="flex items-start justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <span className={`w-2.5 h-2.5 rounded-full animate-pulse flex-shrink-0 ${project.category === "professional" ? "bg-emerald-400" : "bg-cyan-400"}`} />
+            <span className="text-xs uppercase tracking-widest font-semibold text-slate-500">
+              {project.category}
+            </span>
+          </div>
+          {project.tags && (
+            <div className="flex flex-wrap gap-1.5 justify-end">
+              {project.tags.map((tag) => <Tag key={tag} label={tag} />)}
+            </div>
+          )}
+        </div>
+
+        {/* Title */}
+        <h3 className="text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors duration-300 tracking-tight leading-snug">
+          {project.title}
+        </h3>
+
+        {/* Expandable Description */}
+        <AnimatePresence initial={false}>
+          {isExpanded && (
+            <motion.div
+              key="desc"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <p className="text-slate-300 leading-relaxed text-base">
+                {project.description}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Actions */}
+        <div className="flex flex-wrap gap-3 items-center pt-1">
+          {/* Live Demo or Case Study */}
+          <ActionButton
+            variant="primary"
+            onClick={stop(() => openLink(demoUrl))}
+            icon={hasLive ? <ExternalLink className="w-4 h-4" /> : <BookOpen className="w-4 h-4" />}
+          >
+            {hasLive ? "Live Demo" : "Case Study"}
+          </ActionButton>
+
+          {/* If there's a liveUrl, also show a separate Notion case study button */}
+          {hasLive && (
+            <ActionButton
+              variant="ghost"
+              onClick={stop(() => openLink(project.link))}
+              icon={<BookOpen className="w-4 h-4" />}
+              title="View Case Study"
+              ariaLabel={`Case study for ${project.title}`}
+            />
+          )}
+
+          {project.githubUrl && (
+            <ActionButton
+              variant="ghost"
+              onClick={stop(() => openLink(project.githubUrl))}
+              icon={<Github className="w-5 h-5" />}
+              title="View Source Code"
+              ariaLabel={`GitHub repository for ${project.title}`}
+            />
+          )}
+
+          <ActionButton
+            variant="outline"
+            onClick={stop(() => onToggle(project.id))}
+            icon={<ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />}
+          >
+            {isExpanded ? "Show Less" : "Read More"}
+          </ActionButton>
+
+          
+        </div>
+      </div>
+    </motion.article>
+  );
+};
+
+// ── Main ──────────────────────────────────────────────────────────
+const Projects: React.FC = () => {
+  const dispatch = useDispatch();
+  const projects = useSelector(selectAllProjects);
+  const expandedProject = useSelector(selectExpandedProject);
+
+  const handleToggle = useCallback(
+    (id: number) => dispatch(toggleProjectDescription(id)),
+    [dispatch]
+  );
+
+  return (
+    <section id="projects" className="relative w-full py-32 overflow-hidden">
+      <div className="absolute inset-0 opacity-30 pointer-events-none" aria-hidden>
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
 
-      <motion.div 
+      <motion.div
         className="relative z-10 container mx-auto px-6 max-w-6xl"
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.15 }}
         variants={containerVariants}
       >
-        {/* Section Header */}
-        <motion.div 
-          className="text-center mb-24"
-          variants={cardVariants}
-        >
-          <motion.h2 
-            className="text-4xl md:text-6xl font-bold uppercase tracking-widest bg-gradient-to-r from-white via-slate-100 to-cyan-400 bg-clip-text text-transparent drop-shadow-2xl mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-widest bg-gradient-to-r from-slate-100 via-white to-cyan-300 bg-clip-text text-transparent drop-shadow-2xl leading-tight">
-                Featured Projects
-              </h2>
-          </motion.h2>
-          <motion.div 
-            className="w-24 h-1 mx-auto bg-gradient-to-r from-transparent via-white to-cyan-400 rounded-full"
+        {/* Header */}
+        <motion.div className="text-center mb-20" variants={cardVariants}>
+          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-widest bg-gradient-to-r from-white via-slate-100 to-cyan-400 bg-clip-text text-transparent mb-6">
+            Featured Projects
+          </h2>
+          <motion.div
+            className="w-20 h-px mx-auto bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            style={{ originX: 0.5 }}
           />
-        
         </motion.div>
 
-        {/* Projects Grid */}
-        <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-          variants={containerVariants}
-        >
-          {projects.map((project) => (
-            <motion.div
+        {/* Grid */}
+        <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-6" variants={containerVariants}>
+          {[...projects].reverse().map((project) => (
+            <ProjectCard
               key={project.id}
-              variants={cardVariants}
-              className="group relative overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 hover:-translate-y-2"
-              onClick={() => openLink(project.link)}
-            >
-              {/* Card Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-white/2 to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all duration-500 -z-10" />
-              
-              {/* Project Header */}
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full animate-pulse" />
-                  <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold">
-                    {/* {project.category || "Featured"} */}
-                  </span>
-                </div>
-                
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors duration-300 tracking-tight">
-                  {project.title}
-                </h3>
-
-                {/* Expandable Description */}
-                <motion.div
-                  className="overflow-hidden mb-8"
-                  animate={{ height: expandedProject === project.id ? "auto" : 0 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                >
-                  {expandedProject === project.id && (
-                    <p className="text-slate-300 leading-relaxed text-lg">
-                      {project.description}
-                    </p>
-                  )}
-                </motion.div>
-
-                {/* Action Buttons */}
-                <div className="flex flex-wrap gap-4 items-center">
-                  {/* Live Demo Button */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openLink(project.link);
-                    }}
-                    className="group/btn flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl text-white font-semibold hover:bg-white/20 hover:border-white/40 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-300"
-                  >
-                    <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                    Live Demo
-                  </button>
-
-                  {/* Toggle Button */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleDescription(project.id);
-                    }}
-                    className="flex items-center gap-2 px-6 py-3 bg-transparent border-2 border-cyan-400/50 text-cyan-400 rounded-2xl font-semibold hover:bg-cyan-500/10 hover:border-cyan-400 hover:text-cyan-300 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/30"
-                  >
-                    {expandedProject === project.id ? (
-                      <>
-                        Show Less
-                        <svg className="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                        </svg>
-                      </>
-                    ) : (
-                      <>
-                        Read More
-                        <svg className="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </>
-                    )}
-                  </button>
-
-                  {/* GitHub Link (if available) */}
-                  {/* {project.github && ( */}
-                    <button
-                      // onClick={(e) => {
-                      //   e.stopPropagation();
-                      //   openLink(project.github!);
-                      // }}
-                      className="p-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl text-slate-400 hover:bg-white/10 hover:text-white hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
-                      title="View Source Code"
-                    >
-                      <Github className="w-5 h-5" />
-                    </button>
-                  {/* )} */}
-                </div>
-              </div>
-            </motion.div>
+              project={project}
+              isExpanded={expandedProject === project.id}
+              onToggle={handleToggle}
+            />
           ))}
         </motion.div>
       </motion.div>
