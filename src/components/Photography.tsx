@@ -99,14 +99,12 @@ const Photography: React.FC = () => {
           variants={gridItemVariants}
         >
           <motion.h2
-            className="text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-widest bg-gradient-to-r from-white via-slate-100 to-cyan-400 bg-clip-text text-transparent drop-shadow-3xl mb-6 leading-tight"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-widest bg-gradient-to-r from-slate-100 via-white to-cyan-300 bg-clip-text text-transparent drop-shadow-2xl mb-6 leading-tight"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-widest bg-gradient-to-r from-slate-100 via-white to-cyan-300 bg-clip-text text-transparent drop-shadow-2xl leading-tight">
-              My Visual Escape
-            </h2>
+            My Visual Escape
           </motion.h2>
           <motion.div
             className="w-32 h-1 mx-auto bg-gradient-to-r from-transparent via-white/70 to-cyan-400 rounded-full shadow-xl"

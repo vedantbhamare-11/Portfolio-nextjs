@@ -2,28 +2,12 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { selectSkills } from "../redux/skillsSlice";
 
 const AboutMe = () => {
   const [isImportantOnly, setIsImportantOnly] = useState(false);
-
-  const toggleVisibility = () => {
-    setIsImportantOnly(!isImportantOnly);
-  };
-
-  const techStack = [
-    { name: "Web Technologies", color: "from-slate-400 to-gray-400" },
-    { name: "TypeScript", color: "from-blue-400 to-indigo-400" },
-    { name: "React JS", color: "from-cyan-400 to-blue-400" },
-    { name: "Next JS", color: "from-slate-200 to-gray-300" },
-    { name: "React Native", color: "from-purple-400 to-pink-400" },
-    { name: "MongoDB", color: "from-green-500 to-emerald-600" },
-    { name: "SQL", color: "from-orange-400 to-amber-500" },
-    { name: "Redux", color: "from-red-400 to-orange-400" },
-    { name: "Python", color: "from-yellow-400 to-orange-400" },
-    { name: "Gen AI", color: "from-fuchsia-500 to-pink-500" },
-    { name: "LLMs", color: "from-violet-500 to-purple-600" },
-    { name: "AI", color: "from-indigo-500 to-purple-500" },
-  ];
+  const techStack = useSelector(selectSkills);
 
   return (
     <section
@@ -32,7 +16,8 @@ const AboutMe = () => {
     >
       <div className="relative z-10 container mx-auto px-4 sm:px-6 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-8 lg:gap-16">
-          {/* Right Side - Profile Picture ONLY */}
+
+          {/* Profile Picture */}
           <motion.div
             className="w-full lg:flex-1 lg:w-auto order-1 lg:order-2 mx-auto lg:ml-auto max-w-sm lg:max-w-md xl:max-w-lg"
             initial={{ opacity: 0, scale: 0.9, x: 50 }}
@@ -41,7 +26,6 @@ const AboutMe = () => {
             transition={{ duration: 0.8, delay: 0.1 }}
           >
             <div className="relative w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px] xl:h-[560px] rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl border border-slate-800/50 backdrop-blur-xl hover:border-cyan-500/40 group transition-all duration-700 hover:shadow-3xl hover:shadow-cyan-500/30 mx-auto aspect-[3/4]">
-              {/* ✅ PROFILE PHOTO ONLY - Toggle works the same */}
               <motion.div
                 className="w-full h-full relative rounded-2xl lg:rounded-3xl overflow-hidden"
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -84,10 +68,10 @@ const AboutMe = () => {
 
               <div
                 className="flex flex-col justify-start items-start gap-2 cursor-pointer group min-w-[120px]"
-                onClick={toggleVisibility}
+                onClick={() => setIsImportantOnly((prev) => !prev)}
               >
                 <div className="relative">
-                  <div className="w-10 h-5 bg-slate-800/50 backdrop-blur-sm border-2 border-slate-600/50 rounded-full peer-checked:bg-gradient-to-r peer-checked:from-cyan-500/60 peer-checked:to-purple-500/60 peer-checked:border-cyan-400/50 transition-all duration-500 shadow-lg peer-checked:shadow-cyan-500/25 overflow-hidden group-hover:shadow-cyan-400/30">
+                  <div className="w-10 h-5 bg-slate-800/50 backdrop-blur-sm border-2 border-slate-600/50 rounded-full transition-all duration-500 shadow-lg overflow-hidden group-hover:shadow-cyan-400/30">
                     <motion.div
                       className="w-3 h-3 bg-gradient-to-r from-slate-200 to-white rounded-full shadow-lg absolute top-0.5 group-hover:shadow-white/50"
                       animate={{ x: isImportantOnly ? 23 : 1 }}
@@ -97,8 +81,7 @@ const AboutMe = () => {
                 </div>
                 <motion.span
                   className="text-xs uppercase text-slate-400 font-medium origin-left tracking-wide"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1, scale: isImportantOnly ? 1.05 : 1 }}
+                  animate={{ scale: isImportantOnly ? 1.05 : 1 }}
                   transition={{ duration: 0.3 }}
                 >
                   {isImportantOnly ? "No-Nonsense" : "Full Story"}
@@ -114,121 +97,47 @@ const AboutMe = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                Hey! I&apos;m a
-              </span>{" "}
-              <span
-                className={
-                  isImportantOnly
-                    ? "font-bold text-white drop-shadow-lg"
-                    : "font-normal"
-                }
-              >
+              Hey! I&apos;m a{" "}
+              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : ""}>
                 Software Developer
               </span>{" "}
-              <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                who&apos;s equally at home building sleek UIs with
-              </span>{" "}
-              <span
-                className={
-                  isImportantOnly
-                    ? "font-bold text-white drop-shadow-lg"
-                    : "font-normal"
-                }
-              >
+              who&apos;s equally at home building sleek UIs with{" "}
+              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : ""}>
                 React, Next.js
-              </span>
-              <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                , and
               </span>{" "}
-              <span
-                className={
-                  isImportantOnly
-                    ? "font-bold text-white drop-shadow-lg"
-                    : "font-normal"
-                }
-              >
+              and{" "}
+              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : ""}>
                 React Native
               </span>{" "}
-              <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                as I am creating robust back-end solutions with
-              </span>{" "}
-              <span
-                className={
-                  isImportantOnly
-                    ? "font-bold text-white drop-shadow-lg"
-                    : "font-normal"
-                }
-              >
+              as I am creating robust back-end solutions with{" "}
+              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : ""}>
                 Node.js
-              </span>
-              <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                , and
               </span>{" "}
-              <span
-                className={
-                  isImportantOnly
-                    ? "font-bold text-white drop-shadow-lg"
-                    : "font-normal"
-                }
-              >
+              and{" "}
+              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : ""}>
                 Python.
               </span>
-              <br />
-              <br />
-              <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                I&apos;m fluent in
-              </span>{" "}
-              <span
-                className={
-                  isImportantOnly
-                    ? "font-bold text-white drop-shadow-lg"
-                    : "font-normal"
-                }
-              >
+              <br /><br />
+              I&apos;m fluent in{" "}
+              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : ""}>
                 TypeScript
               </span>
-              <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                , and libraries like
-              </span>{" "}
-              <span
-                className={
-                  isImportantOnly
-                    ? "font-bold text-white drop-shadow-lg"
-                    : "font-normal"
-                }
-              >
+              , and libraries like{" "}
+              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : ""}>
                 Material UI, Tailwind CSS, ShadCN
-              </span>
-              <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                , and
               </span>{" "}
-              <span
-                className={
-                  isImportantOnly
-                    ? "font-bold text-white drop-shadow-lg"
-                    : "font-normal"
-                }
-              >
+              and{" "}
+              <span className={isImportantOnly ? "font-bold text-white drop-shadow-lg" : ""}>
                 Bootstrap
               </span>{" "}
-              <span className={isImportantOnly ? "font-normal" : "font-normal"}>
-                for responsive designs.
-              </span>
-              <br />
-              <br />
-              <span
-                className={
-                  isImportantOnly
-                    ? "font-bold text-white drop-shadow-2xl"
-                    : "font-semibold text-white drop-shadow-lg"
-                }
-              >
+              for responsive designs.
+              <br /><br />
+              <span className={isImportantOnly ? "font-bold text-white drop-shadow-2xl" : "font-semibold text-white drop-shadow-lg"}>
                 Let&apos;s build something awesome!
               </span>
             </motion.p>
 
-            {/* Tech Stack Badges */}
+            {/* Tech Stack Badges — from Redux */}
             <motion.div
               className="grid grid-cols-2 sm:grid-cols-3 lg:flex flex-wrap gap-2 sm:gap-3"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -239,13 +148,11 @@ const AboutMe = () => {
               {techStack.map((tech, index) => (
                 <motion.div
                   key={tech.name}
-                  className={`px-3 py-2 sm:px-4 sm:py-2 bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 hover:border-cyan-400/50 rounded-xl sm:rounded-full shadow-xl hover:shadow-cyan-500/30 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-purple-500/10 transition-all duration-400 cursor-default flex items-center gap-1.5 sm:gap-2 hover:scale-105 hover:-translate-y-1 text-xs sm:text-xs`}
+                  className="px-3 py-2 sm:px-4 sm:py-2 bg-slate-800/40 backdrop-blur-xl border border-slate-600/40 hover:border-cyan-400/50 rounded-xl sm:rounded-full shadow-xl hover:shadow-cyan-500/30 hover:bg-gradient-to-r hover:from-cyan-500/10 hover:to-purple-500/10 transition-all duration-400 cursor-default flex items-center gap-1.5 sm:gap-2 hover:scale-105 hover:-translate-y-1 text-xs sm:text-xs"
                   whileHover={{ scale: 1.08, y: -3 }}
                   transition={{ duration: 0.5, delay: 1 + index * 0.08 }}
                 >
-                  <div
-                    className={`w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r ${tech.color} rounded-full shadow-lg flex-shrink-0`}
-                  />
+                  <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r ${tech.color} rounded-full shadow-lg flex-shrink-0`} />
                   <span className="font-semibold uppercase tracking-wider text-slate-200 drop-shadow-md truncate">
                     {tech.name}
                   </span>
