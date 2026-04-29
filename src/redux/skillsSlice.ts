@@ -25,15 +25,9 @@ const initialState: SkillsState = {
     { name: "LLMs", color: "from-violet-500 to-purple-600" },
     { name: "AI", color: "from-indigo-500 to-purple-500" },
     { name: "Machine Learning", color: "from-pink-400 to-rose-500" },
-    { name: "Deep Learning", color: "from-rose-500 to-red-500" },
-    { name: "Computer Vision", color: "from-teal-400 to-cyan-500" },
     { name: "Prompt Engineering", color: "from-amber-400 to-yellow-500" },
-    { name: "OpenAI", color: "from-emerald-400 to-teal-500" },
     { name: "Hugging Face", color: "from-yellow-500 to-amber-600" },
     { name: "GitHub", color: "from-slate-300 to-slate-500" },
-    { name: "Bootstrap", color: "from-purple-500 to-violet-600" },
-    { name: "Data Structures", color: "from-blue-300 to-cyan-400" },
-    { name: "Algorithms", color: "from-cyan-300 to-blue-400" },
   ],
 };
 
