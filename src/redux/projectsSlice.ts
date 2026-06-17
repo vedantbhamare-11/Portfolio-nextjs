@@ -148,6 +148,18 @@ const initialState: ProjectsState = {
       tags: ["GPT-4o", "Next.js", "AI"],
       liveUrl: "https://curry-cue.vercel.app",
     },
+
+    {
+      id: 13,
+      title: "AI Curriculum Design Engine",
+      description:
+        "AI-driven exam creator that generates strict, schema-validated assessment papers anchored to uploaded textbooks. Features a BullMQ/Redis asynchronous background task processor, multimodal scanned PDF vision handling via Gemini Pro, and an in-app white-label printable preview document vault.",
+      link: "https://vedantbhamare.notion.site/AeroPaper-AI-Powered-Curriculum-Design-Engine-38267c5bdc678049ae28fbb557bc319e",
+      category: "personal",
+      githubUrl: "https://github.com/vedantbhamare-11/AI-Curriculum-Design-Engine",
+      tags: ["Gemini Pro", "Next.js", "BullMQ", "Redis", "Node.js"],
+      // liveUrl: "https://aeropaper.vercel.app",
+    },
   ],
 };
 
