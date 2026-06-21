@@ -158,7 +158,7 @@ const initialState: ProjectsState = {
       category: "personal",
       githubUrl: "https://github.com/vedantbhamare-11/AI-Curriculum-Design-Engine",
       tags: ["Gemini Pro", "Next.js", "BullMQ", "Redis", "Node.js"],
-      // liveUrl: "https://aeropaper.vercel.app",
+      liveUrl: "https://ai-curriculum-design-engine.vercel.app/",
     },
   ],
 };
